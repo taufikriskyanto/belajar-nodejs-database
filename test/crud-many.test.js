@@ -22,6 +22,17 @@ describe("Prisma Client", () => {
         expect(count).toBe(2);
     });
 
+
+    it('should be able to delete customer', async () => {
+        const customer = await prismaClient.customer.delete({
+            where: {
+                id: "joko"
+            }
+        });
+
+        expect(customer.id).toBe("joko");
+    });
+
     it('should can update many records', async () => {
         const {count} = await prismaClient.customer.updateMany({
             data: {
@@ -34,6 +45,17 @@ describe("Prisma Client", () => {
 
         expect(count).toBe(1);
     });
+    it('should be able to delete customer', async () => {
+        const customer = await prismaClient.customer.delete({
+            where: {
+                id: "budi"
+            }
+        });
+
+        expect(customer.id).toBe("budi");
+    });
+
+
 
     it('should can delete many records', async ()=> {
         const {count} = await prismaClient.customer.deleteMany({
@@ -48,6 +70,6 @@ describe("Prisma Client", () => {
     it('should can read many records', async () => {
         const customers = await prismaClient.customer.findMany({});
         console.info(customers);
-        expect(customers.length).toBe(8);
+        expect(customers.length).toBe(1);
     });
 })
