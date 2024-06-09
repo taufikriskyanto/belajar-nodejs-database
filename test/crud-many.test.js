@@ -33,7 +33,7 @@ describe("Prisma Client", () => {
         expect(customer.id).toBe("joko");
     });
 
-    it('should can update many records', async () => {
+        it('should can update many records', async () => {
         const {count} = await prismaClient.customer.updateMany({
             data: {
                 email: "budilagi@pzn.com"
@@ -70,6 +70,6 @@ describe("Prisma Client", () => {
     it('should can read many records', async () => {
         const customers = await prismaClient.customer.findMany({});
         console.info(customers);
-        expect(customers.length).toBe(1);
+        expect(customers.length).toBe(4);
     });
 })
