@@ -27,6 +27,26 @@ describe("Prisma Client", () => {
         expect(kurniawan.name).toBe("Kurniawan");
     });
 
+    it('should be able to delete customer', async () => {
+        const customer = await prismaClient.customer.delete({
+            where: {
+                id: "eko"
+            }
+        });
+
+        expect(customer.id).toBe("eko");
+    });
+
+    it('should be able to delete customer', async () => {
+        const customer = await prismaClient.customer.delete({
+            where: {
+                id: "kurniawan"
+            }
+        });
+
+        expect(customer.id).toBe("kurniawan");
+    });
+
     it('should can execute interactive transaction', async () => {
         const [eko, kurniawan] = await prismaClient.$transaction(async (prisma) => {
             const eko = await prisma.customer.create({
@@ -53,5 +73,26 @@ describe("Prisma Client", () => {
 
         expect(eko.name).toBe("Eko");
         expect(kurniawan.name).toBe("Kurniawan");
+    });
+
+
+    it('should be able to delete customer', async () => {
+        const customer = await prismaClient.customer.delete({
+            where: {
+                id: "eko2"
+            }
+        });
+
+        expect(customer.id).toBe("eko2");
+    });
+
+    it('should be able to delete customer', async () => {
+        const customer = await prismaClient.customer.delete({
+            where: {
+                id: "kurniawan2"
+            }
+        });
+
+        expect(customer.id).toBe("kurniawan2");
     });
 })
